@@ -1,0 +1,73 @@
+npm install -g @angular/cli
+
+ng new <name> --prefix <pack_management_name> (pm in demo)
+
+
+======TIPS======
+-> {{}} interpolation is one way binding (From component class property to an element property)
+-> Interpolation always assigns a string
+
+-> Property binding ( [src]='product.imageUrl' instead of src={{product.imageUrl}} ) is more preferred
+Like interpolation, property binding is one way (From comp class prop to elem property)
+
+-> @Output() decorator MUST be an event
+-> Constructor is used to initialization, not to code that takes time to execute
+-> tap() method is good for debugging or logging
+
+-> routerLink can be added to any clickable element
+-> routerLink can be written without squared brackets "[]" when there are no parameters (like "product/:id")
+-> "?" Safe navigator, if item is not null or not undefined (Example: {{product?.productName}}
+-> Routing can be of 2 types:
+
+For Bootstrap Array:
+-> Contain what index.html file needs
+-> !!! Every application must bootstrap at least one component, the root application component
+-> !!! The bootstrap array should only be used in the root application module, AppModule
+
+For Declaration Array:
+-> Contain components owned by this module
+-> !!! Every component, directive, and pipe we create must belong to one and only one Angular module (the ones we create, obvious)
+-> !!! Only declare components, directives and pipes
+-> !!! All declared components, directives, and pipes are private by default. There are only accessible to other components, directives, and pipes declared in the same module
+-> !!! The Angular module provides the template resolution environment for its component templates (for our app, the star component must be in same module with product-details, or exported, but never the both)
+
+For Export Array:
+-> Contain pieces we wanna share (components, directives and pipes), or other modules
+-> It is often used only by shared modules
+-> !!! Export any component, directive, or pipe if other components need it
+-> !!! Re-export modules to re-export their components, directives, and pipes
+-> !!! We can export something without including it in the imports array
+
+For Import Array:
+-> Import the modules that this module needs. They can be
+    - modules that provide components, directives and pipes needed by templates associated with components declared in this module
+    - modules that provide system or third-party services (usually imported only in AppModule, to be global available)
+    - feature modules (the ones we create)
+-> !!! Adding a module to the imports array makes available any components, directives, or pipes defined in that module's exports array
+-> !!! Only import what modules needs
+-> !!! Importing a module does NOT provide access to its imported modules
+-> !!! Use the imports array to register services provided by Angular or third-party libraries
+-> !!! Import the module in the AppModule to ensure its services are registered one time
+
+-> Modules can also register services for out application
+-> "provides: [ProductService]" is old. Now used as: ""@Injectable({providedIn:'root'})""
+
+-> RouterModule.forRoot:
+    -> Registers Router Service
+    -> Declares router directives
+    -> Exposes configures routes
+-> RouterModule.forChild:
+    -> Declares router directives
+    -> Exposes configured routes
+
+-> To share a component like in the SharedModule, we add the component, directive, or pipe to declaration, and then to exports
+
+-> !!!! The Declaration Array has Modules created by me. The Import Array has external modules. The Declaration Array needs Import Array Modules to work
+================
+
+
+========LIFECYCLE_HOOKS===========
+-> OnInit: Perform component initialization, retrieve data
+-> OnChanges: Perform action after change to input properties
+-> OnDestroy: Perform cleanup
+==================================
