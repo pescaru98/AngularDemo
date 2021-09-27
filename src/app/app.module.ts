@@ -6,6 +6,7 @@ import { ProductListComponent } from './components/products/product-list.compone
 import {FormsModule} from "@angular/forms";
 import {ConvertToSpacesPipe} from "./pipes/convert-to-spaces.pipe";
 import { StarComponent } from './components/star/star.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { StarComponent } from './components/star/star.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
